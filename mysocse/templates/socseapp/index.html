@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>TheEvent Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+<style>
+  img{
+    border-radius: 10px;
+  }
+</style>
+<body style="background-color: #101522;">
+
+
+  <header id="header" class="d-flex align-items-center ">
+    <div class="container-fluid container-xxl d-flex align-items-center">
+
+      <div id="logo" class="me-auto">
+
+        <a href="index.html" class="scrollto"><h3 class="text-light">So<span class="text-danger">CSE</span></h3></a>
+        
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+
+        
+        <ul>
+
+
+          <li><a href="#hero" class="nav-link scrollto" >Home</a></li>
+          <li><a href="#announcements" class="nav-link scrollto" >Announcements</a></li>
+          <li><a href="#events" class="nav-link scrollto" >Events</a></li>
+          <li><a class="nav-link scrollto" >Magazines</a></li>
+
+
+          
+          <li><a class="nav-link scrollto">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      
+      <a href="/accounts/login/" style="margin-left: 1vw;" class="btn-sm btn-danger">login</a>
+
+    </div>
+  </header><!-- End Header -->
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" style="position: relative;">
+    <div style="height: 100vh;width: 100vw;position: absolute;" class="d-flex justify-content-center align-items-center">
+      <div>
+        <h1 style="font-size: 2.5em;" class="text-light text-center">School of <span class="text-danger">Computer Science & Engineering</span></h1>
+        <br>
+        <p style="font-size: 0.9em;width: 60%;" class="container text-light text-center">KLE Tech Computer Science & Engineering program provides a unique environment for learning through a curriculum designed for experiential learning. This experience is ensured by creating a curriculum designed by inputs from industry, academia and recent technological advancements.</p>
+
+
+
+       
+        
+      </div>
+
+   
+      
+
+    </div>
+    <div class="container d-flex align-items-center" style="height: 100vh;width: fit-content;">
+
+    </div>
+  </section><!-- End Hero Section -->
+  <div id="announcements" class="container">
+    <h1 class="text-center text-danger">Announcements</h1>
+    {% for announcement in announcements %}
+    <p class="text-light text-center">
+      {{announcement.description}}
+    </p>
+    {% endfor %}
+  </div>
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about">
+      <div class="container">
+        
+
+      </div>
+    </section><!-- End About Section -->
+    <div id="events">
+   {% for event in events %}
+   {% ifequal forloop.counter 1 %}
+    <div class="row container" style="margin-top: 5vh;">
+      <div class="col">
+        <img src="{{event.cover.url}}" height="400" alt="">
+      </div>
+      <div class="col text-center">
+          <h3 class="text-danger">{{event.event_name}}</h3>
+          <p class="text-light">{{event.description}}</p>
+          <p class="text-light">organised by</p>
+          {% for org in event.organiser.all %}
+          <p class="text-light">{{org.get_full_name}}</p>
+            {% endfor %}
+
+      </div>
+    </div>
+   
+   {% else %}
+
+   <div class="row" style="margin-top: 5vh;">
+    <div class="col text-center">
+      <h3 class="text-danger">{{event.event_name}}</h3>
+      <p class="text-light">{{event.description}}</p>
+      <p class="text-light">organised by</p>
+      {% for org in event.organiser.all %}
+      <p class="text-light">{{org.get_full_name}}</p>
+        {% endfor %}
+
+  </div>
+    <div class="col">
+      <img src="{{event.cover.url}}" height="400" alt="">
+    </div>
+    
+  </div>
+
+   {% endifequal %}
+   {% endfor %}
+  </div>
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container d-flex justify-content-between">
+
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <a href="index.html" class="scrollto"><h3 class="text-light">So<span class="text-danger">CSE</span></h3></a>
+            <p>KLE Tech Computer Science & Engineering program provides a unique environment for learning through a curriculum designed for experiential learning. This experience is ensured by creating a curriculum designed by inputs from industry, academia and recent technological advancements.</p>
+          </div>
+
+        
+
+          
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              Vidya Nagar, Hubli <br>
+              Karnataka 580031<br>
+
+              <strong>Phone:</strong>  0836 237 8300<br>
+
+            </p>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </footer><!-- End  Footer -->
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

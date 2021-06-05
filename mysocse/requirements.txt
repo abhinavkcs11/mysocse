@@ -1,0 +1,7 @@
+django
+gunicorn
+django-heroku
+dj-database-url 
+psycopg2
+django-allauth
+whitenoise
