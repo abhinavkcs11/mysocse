@@ -6,3 +6,4 @@ psycopg2
 django-allauth
 whitenoise
 PIL
+Pillow
